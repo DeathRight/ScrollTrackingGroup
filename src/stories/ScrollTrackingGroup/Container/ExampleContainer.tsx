@@ -34,10 +34,7 @@ const ExampleContainer = (props: ExampleContainerProps) => {
   const [scrolledTo, setScrolledTo] = useState("");
 
   const sectStyle: CSSProperties = {
-    minWidth: flexDirection.substring(0, 3) === "row" ? undefined : "100%",
-    minHeight: flexDirection.substring(0, 3) === "row" ? "100%" : undefined,
-    display: "flex",
-    flexDirection: "column",
+    flex: "1 0 auto",
   };
   const sectionsArray = useMemo(() => {
     let array: JSX.Element[] = [];
@@ -63,23 +60,46 @@ const ExampleContainer = (props: ExampleContainerProps) => {
     backgroundColor: "whitesmoke",
     top: 0,
     padding: "4px",
+    visibility: "visible",
   };
   let contStyle: CSSProperties = {
+    minWidth: "100%",
+    minHeight: "100%",
+  };
+  let innerStyle: CSSProperties = {
+    minWidth: "100%",
+    minHeight: "100%",
+    width: "fit-content",
+    height: "fit-content",
+  };
+  let sectContStyle: CSSProperties = {
     display: "flex",
     flexDirection: flexDirection,
-    minWidth: "100vw",
-    minHeight: "100vw",
+    minWidth: "100%",
+    minHeight: "100%",
   };
 
   return (
     <Container
-      style={contStyle}
+      outerStyle={contStyle}
+      style={innerStyle}
       onScrolledToChange={(id) => setScrolledTo(id)}
       {...args}
     >
-      <div style={stickyStyle}>Currently scrolled to Section: {scrolledTo}</div>
+      <div
+        style={{
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          visibility: "hidden",
+        }}
+      >
+        <div style={stickyStyle}>
+          Currently scrolled to Section: {scrolledTo}
+        </div>
+      </div>
       <InternalOutlined {...Outlined.args} />
-      {sectionsArray}
+      <div style={sectContStyle}>{sectionsArray}</div>
     </Container>
   );
 };
