@@ -1,16 +1,16 @@
 {
-  "name": "@anthonyhienvu/typescript-react-storybook-template",
-  "version": "0.4.0",
-  "description": "Project template for quickly building a React component library with Storybook.js & TypeScript.",
+  "name": "@deathright/react-scrolltrackinggroup",
+  "version": "1",
+  "description": "React Component that tracks which section is scrolled to, for SPA or quasi-carousel functionality.",
   "license": "MIT",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AVu120/typescript-react-storybook-template.git"
+    "url": "git+https://github.com/DeathRight/ScrollTrackingGroup.git"
   },
-  "author": "AVu120 <avu120@gmail.com>",
+  "author": "DeathRight (Travis Baldwin) <travis@voidtavern.dev>",
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@rollup/plugin-commonjs": "^20.0.0",
@@ -38,5 +38,8 @@
     "build": "rollup -c",
     "prePublish": "cp package.json lib",
     "deploy-storybook": "storybook-to-ghpages"
+  },
+  "dependencies": {
+    "import-as-string": "^1.0.0"
   }
 }

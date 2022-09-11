@@ -2,7 +2,7 @@ name: Deploy to QA Environment (on GitHub Pages)
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   publish-gpr:

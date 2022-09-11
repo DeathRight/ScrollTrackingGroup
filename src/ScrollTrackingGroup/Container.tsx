@@ -218,7 +218,7 @@ const STGComponent = React.forwardRef<HTMLDivElement, ContainerProps>(
 // Wrap STG component in STGContextProvider
 /**
  * The Container is what houses the `Window` and `Sections` of the ScrollTrackingGroup.
- * It's, well... the container.
+ * It's, well, the container.
  */
 const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
   (props, ref) => {

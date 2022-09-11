@@ -1,15 +1,6 @@
-import { useMemo } from "@storybook/addons";
 import { ComponentMeta, ComponentStory, Story } from "@storybook/react";
-import { CSSProperties, useState } from "react";
-import Container, {
-  ContainerProps,
-} from "../../../ScrollTrackingGroup/Container";
-import Section from "../../../ScrollTrackingGroup/Section";
-import Window from "../../../ScrollTrackingGroup/Window";
-import LoremIpsum from "../Section/LoremIpsum";
-import { WithoutContext } from "../Section/Section.stories";
-import { InternalOutlined, Outlined } from "../Window/Window.stories";
 import ExampleContainer from "./ExampleContainer";
+import ExampleContainerCode from "./ExampleContainer.code";
 
 export default {
   component: ExampleContainer,
@@ -40,7 +31,45 @@ export default {
 const Template: ComponentStory<typeof ExampleContainer> = (args) => (
   <ExampleContainer {...args} />
 );
+
 export const Base = Template.bind({});
+
+export const Introduction = Template.bind({});
+Introduction.parameters = {
+  docs: {
+    source: {
+      code: `${ExampleContainerCode}`,
+      language: "ts",
+    },
+    description: {
+      story:
+        "The ***source code*** for this story shows you the wrapper `ExampleContainer` component built for the next stories. \nThe `ExampleComponent` is a good example of a normal flexbox use case for the `ScrollTrackingGroup` as a whole, and features a couple of *Storybook specific* properties.",
+    },
+  },
+};
 
 export const Vertical = Template.bind({});
 Vertical.args = { sections: 6 };
+Vertical.parameters = {
+  docs: {
+    description: {
+      story:
+        "Here, we have a default, simple vertical `Container` with 6 `Sections` loaded. \nThis is standard behavior that would work without the `ExampleContainer` boilerplate from `Introduction`'s source code.",
+    },
+  },
+};
+
+export const Horizontal = Template.bind({});
+Horizontal.args = {
+  sections: 6,
+  flexDirection: "row",
+  orientation: "horizontal",
+};
+Horizontal.parameters = {
+  docs: {
+    description: {
+      story:
+        "This time, we have a bit more complex ***horizontal*** `Container` with 6 `Sections` loaded. \nThis does require a bit of boilerplate, so make sure to check out the `Introduction` story's **source code**!",
+    },
+  },
+};
