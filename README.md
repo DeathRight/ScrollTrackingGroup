@@ -50,4 +50,6 @@ Example:
 </ScrollTrackingGroup.Container>
 ```
 ## Documentation
-For in-depth documentation please see the Storybook over at the [GitHub Page](https://deathright.github.io/ScrollTrackingGroup)
+For in-depth documentation please see the Storybook over at the [GitHub Page](https://deathright.github.io/ScrollTrackingGroup).
+
+I also try to keep plenty of documentation directly in the source code, which can be found [here](https://github.com/DeathRight/ScrollTrackingGroup/tree/main/src/ScrollTrackingGroup/src).
