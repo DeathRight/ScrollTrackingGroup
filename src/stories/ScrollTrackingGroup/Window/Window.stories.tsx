@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Container from "../../../ScrollTrackingGroup/Container";
-import Window from "../../../ScrollTrackingGroup/Window";
+import Container from "../../../ScrollTrackingGroup/src/Container";
+import Window from "../../../ScrollTrackingGroup/src/Window";
 import { WithLoremIpsum, WithoutContext } from "../Section/Section.stories";
 
 export default {

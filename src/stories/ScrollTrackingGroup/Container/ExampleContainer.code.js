@@ -1,6 +1,6 @@
 export default 'import { useState, CSSProperties, useMemo } from "react";\n' +
-  'import { ScrollTrackingGroup as STG } from "../../../ScrollTrackingGroup";\n' +
-  'import { ContainerProps } from "../../../ScrollTrackingGroup/Container";\n' +
+  'import { ScrollTrackingGroup as STG } from "../../../ScrollTrackingGroup/src";\n' +
+  'import { ContainerProps } from "../../../ScrollTrackingGroup/src/Container";\n' +
   'import LoremIpsum from "../Section/LoremIpsum";\n' +
   'import { InternalOutlined, Outlined } from "../Window/Window.stories";\n' +
   "\n" +
