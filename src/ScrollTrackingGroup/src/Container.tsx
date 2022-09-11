@@ -101,27 +101,6 @@ const STGComponent = React.forwardRef<HTMLDivElement, ContainerProps>(
     /* ------------------------- Internal ref forwarding ------------------------ */
     useImperativeHandle(ref, () => container.current as HTMLDivElement);
 
-    /* --------------------------- Children useEffect --------------------------- */
-    /*useEffect(() => {
-      const cObj = {} as { [k: string]: number | undefined | null };
-      React.Children.forEach(children, (c) => {
-        const child = c as React.ReactElement<SectionProps>;
-
-        // Check if type is actually a Section component
-        if (child.props.id) cObj[child.props.id] = 1;
-      });
-
-      // If child is removed, remove the ref
-      const sObj = sections.current;
-      if (sObj) {
-        Object.keys(sObj).forEach((k) => {
-          if (!cObj[k]) {
-            saveRef(null, k);
-          }
-        });
-      }
-    }, [children]);*/
-
     /* -------------------------------------------------------------------------- */
     /*                          Scroll Tracking Behavior                          */
     /* -------------------------------------------------------------------------- */
