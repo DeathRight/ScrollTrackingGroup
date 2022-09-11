@@ -32,7 +32,7 @@ export type WindowProps = {
    *
    * ---
    *
-   * By default Window has the following properties:
+   * By default Window has the following style:
    * ```
    * {
    *  position: "sticky",

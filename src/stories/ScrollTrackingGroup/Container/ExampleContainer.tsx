@@ -1,9 +1,7 @@
 import { useState, CSSProperties, useMemo } from "react";
-import Container, {
-  ContainerProps,
-} from "../../../ScrollTrackingGroup/Container";
+import { ScrollTrackingGroup as STG } from "../../../ScrollTrackingGroup";
+import { ContainerProps } from "../../../ScrollTrackingGroup/Container";
 import LoremIpsum from "../Section/LoremIpsum";
-import { WithoutContext } from "../Section/Section.stories";
 import { InternalOutlined, Outlined } from "../Window/Window.stories";
 
 export interface ExampleContainerProps extends ContainerProps {
@@ -21,6 +19,10 @@ export interface ExampleContainerProps extends ContainerProps {
   flexDirection?: CSSProperties["flexDirection"];
 }
 
+/**
+ * The Container is what houses the `Window` and `Sections` of the ScrollTrackingGroup.
+ * It's, well... the container.
+ */
 const ExampleContainer = (props: ExampleContainerProps) => {
   const {
     sections = 1,
@@ -33,74 +35,66 @@ const ExampleContainer = (props: ExampleContainerProps) => {
 
   const [scrolledTo, setScrolledTo] = useState("");
 
+  /* ------------------------- Styling for STG Section ------------------------ */
   const sectStyle: CSSProperties = {
-    flex: "1 0 auto",
+    minWidth: "80vw",
   };
+  /* ---------------------------- Sections Builder ---------------------------- */
   const sectionsArray = useMemo(() => {
     let array: JSX.Element[] = [];
     for (let i = 0; i < sections; i++) {
       const content = (
         <>
           <h1>This is Section {i}</h1>
+          {/* `LoremIpsum` is the huge block of example text */}
           {LoremIpsum}
         </>
       );
+
       const sect = (
-        <WithoutContext id={`Section${i}`} style={sectStyle}>
+        <STG.Section id={`Section${i}`} style={sectStyle}>
           {content}
-        </WithoutContext>
+        </STG.Section>
       );
+
       array.push(sect);
     }
     return array;
   }, [sections]);
 
+  /* --------------- Styling for currently scrolled to indicator -------------- */
   let stickyStyle: CSSProperties = {
-    position: "fixed",
+    position: "sticky",
     backgroundColor: "whitesmoke",
     top: 0,
+    left: 0,
     padding: "4px",
-    visibility: "visible",
-  };
-  let contStyle: CSSProperties = {
-    minWidth: "100%",
-    minHeight: "100%",
-  };
-  let innerStyle: CSSProperties = {
-    minWidth: "100%",
-    minHeight: "100%",
     width: "fit-content",
-    height: "fit-content",
+    zIndex: "999",
   };
-  let sectContStyle: CSSProperties = {
-    display: "flex",
+  /* ------------------------ Styling for STG Container ----------------------- */
+  let contStyle: CSSProperties = {
+    // inline-flex necessary for `flex-direction: row` to work properly
+    display: "inline-flex",
     flexDirection: flexDirection,
     minWidth: "100%",
     minHeight: "100%",
+    marginTop: "2rem",
   };
 
   return (
-    <Container
-      outerStyle={contStyle}
-      style={innerStyle}
-      onScrolledToChange={(id) => setScrolledTo(id)}
-      {...args}
-    >
-      <div
-        style={{
-          position: "absolute",
-          width: "100%",
-          height: "100%",
-          visibility: "hidden",
-        }}
+    <>
+      <div style={stickyStyle}>Currently scrolled to Section: {scrolledTo}</div>
+      <STG.Container
+        style={contStyle}
+        onScrolledToChange={(id) => setScrolledTo(id)}
+        {...args}
       >
-        <div style={stickyStyle}>
-          Currently scrolled to Section: {scrolledTo}
-        </div>
-      </div>
-      <InternalOutlined {...Outlined.args} />
-      <div style={sectContStyle}>{sectionsArray}</div>
-    </Container>
+        {/* `InternalOutlined` is the `Window/Outlined` story component */}
+        <InternalOutlined {...Outlined.args} />
+        {sectionsArray}
+      </STG.Container>
+    </>
   );
 };
 
