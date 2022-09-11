@@ -1,6 +1,6 @@
 {
   "name": "@deathright/react-scrolltrackinggroup",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React Component that tracks which section is scrolled to, for SPA or quasi-carousel functionality.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
