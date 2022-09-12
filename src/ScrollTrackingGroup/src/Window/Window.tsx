@@ -1,5 +1,6 @@
+import React from "react";
 import { useId, useContext, useMemo, CSSProperties } from "react";
-import { STGContext, ISTGContext } from "./context";
+import STGContext, { ISTGContext } from "../STGContextProvider/STGContext";
 
 export type WindowProps = {
   /**

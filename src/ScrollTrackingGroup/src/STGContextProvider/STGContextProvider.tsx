@@ -1,33 +1,5 @@
-import {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useCallback,
-  useRef,
-  useState,
-} from "react";
-import { IPosition } from "./useScrollPosition/useScrollPosition";
-
-export type Coordinates = { x: number; y: number };
-
-export type Orientation = "vertical" | "horizontal";
-
-export type SectionObj = { element: HTMLDivElement; position: IPosition };
-export type SectionsObj = { [k: string]: SectionObj | undefined | null };
-
-export interface ISTGContext {
-  container: React.MutableRefObject<HTMLDivElement | null>;
-  sections: React.MutableRefObject<SectionsObj>;
-  window: React.MutableRefObject<HTMLDivElement | undefined>;
-  saveRef: (e: HTMLDivElement | null, key: string) => void;
-  lastUpdated: number;
-  setLastUpdated: Dispatch<SetStateAction<number>>;
-  flipped: boolean;
-  orientation: Orientation;
-  localScroll: boolean;
-}
-
-export const STGContext = createContext<ISTGContext | null>(null);
+import React, { useCallback, useRef, useState } from "react";
+import STGContext, { Orientation, SectionObj, SectionsObj } from "./STGContext";
 
 const STGContextProvider = (props: {
   children: React.ReactNode;

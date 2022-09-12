@@ -1,5 +1,5 @@
 import { useState, CSSProperties, useMemo } from "react";
-import { ScrollTrackingGroup as STG } from "../../../ScrollTrackingGroup/src";
+import { default as STG } from "../../../ScrollTrackingGroup/src/ScrollTrackingGroup";
 import { ContainerProps } from "../../../ScrollTrackingGroup/src/Container";
 import LoremIpsum from "../Section/LoremIpsum";
 import { InternalOutlined, Outlined } from "../Window/Window.stories";

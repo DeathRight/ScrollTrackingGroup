@@ -1,6 +1,7 @@
+import React from "react";
 import { CSSProperties, useContext, useEffect, useMemo, useRef } from "react";
-import { STGContext, ISTGContext } from "./context";
-import { useScrollPosition } from "./useScrollPosition";
+import STGContext, { ISTGContext } from "../STGContextProvider/STGContext";
+import { useScrollPosition } from "../useScrollPosition";
 
 export type SectionProps = {
   children?: React.ReactNode;

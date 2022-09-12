@@ -6,13 +6,12 @@ import React, {
   useId,
   CSSProperties,
 } from "react";
-import STGContextProvider, {
-  STGContext,
+import STGContextProvider from "../STGContextProvider";
+import STGContext, {
   ISTGContext,
   SectionObj,
-} from "./context";
-import Section, { SectionProps } from "./Section";
-import { useScrollPosition } from "./useScrollPosition";
+} from "../STGContextProvider/STGContext";
+import { useScrollPosition } from "../useScrollPosition";
 
 export type ContainerProps = {
   children: React.ReactNode;
@@ -74,7 +73,6 @@ type Line = { start: number; end: number };
 const doesOverlap = (window: Line, object: Line) =>
   window.start <= object.end && object.start <= window.end;
 
-const SectionType = (<Section id="" />).type;
 const STGComponent = React.forwardRef<HTMLDivElement, ContainerProps>(
   (props, ref) => {
     const {
@@ -94,7 +92,6 @@ const STGComponent = React.forwardRef<HTMLDivElement, ContainerProps>(
       container,
       window: wind,
       sections,
-      saveRef,
       lastUpdated,
     } = useContext(STGContext) as ISTGContext;
 
